@@ -1,0 +1,16 @@
+<div class="modal-body container">
+    <div class="input-group d-flex">
+      <h1 class="modal-title">{{heading}}</h1>
+      <button type="button" class="close align-self-start ml-auto" aria-label="Close" (click)="activeModal.dismiss('Cross click')" tabindex="-1">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="title-divider"></div>
+    <span class="error-dialog-text">{{message}}</span>
+    <div *ngIf="message2 != ''">
+      <span class="error-dialog-text">{{message2}}</span>
+    </div>
+    <div *ngIf="gifURL != ''">
+      <img src="{{gifURL}}" />
+    </div>
+  </div>
