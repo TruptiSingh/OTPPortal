@@ -6,4 +6,5 @@ export interface IUserAdmin {
     isAdmin: boolean;
     isTutor: boolean;
     isStudent: boolean;
+    isActive: boolean
 }

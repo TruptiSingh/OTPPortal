@@ -1,6 +1,16 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\components",
+    "\\src\\app\\services",
+    "\\src\\app\\services\\api-services",
+    "\\src\\app\\services\\api-services\\users-api",
+    "\\src\\app\\services\\authentication",
+    "\\src\\app\\services\\user-services",
+    "\\src\\environments"
   ],
+  "SelectedNode": "\\src\\app\\app.component.html",
   "PreviewInSolutionExplorer": false
 }

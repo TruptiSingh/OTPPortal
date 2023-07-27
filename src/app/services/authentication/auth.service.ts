@@ -47,15 +47,15 @@ export class AuthService {
     let roles = [
       {
         key: this.administratorRole,
-        value: "Administrator"
+        value: "administrator"
       },
       {
         key: this.tutorRole,
-        value: "Tutor"
+        value: "tutor"
       },
       {
         key: this.studentRole,
-        value: "Student"
+        value: "student"
       },
     ];
 

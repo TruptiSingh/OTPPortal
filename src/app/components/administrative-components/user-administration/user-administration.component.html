@@ -1,0 +1,121 @@
+<div *ngIf="pageLoading">
+
+  <img style="width:120px;height:auto;" src="/assets/images/loading.gif" />
+  Loading...
+
+</div>
+
+<div class="row justify-content-center" *ngIf="!pageLoading && !authService.isAuthenticated()">
+
+  <span>You have been logged out click <span class="text-muted btn" (click)="authService.login()">here</span> to log back in</span>
+
+</div>
+
+<form *ngIf="!pageLoading && authService.isAuthenticated()" class="main-page-form">
+
+  <h1 class="mb-3">All Users</h1>
+  <div class="title-divider"></div>
+
+  <div class="form-group flex-container wrap button-row">
+    <div class="flex-item button-row right-row">
+      <label class="d-inline search-label" for="searchTerm">Full text search:</label><input class="form-control ml-2 d-inline search-box" type="text" name="searchTerm" [(ngModel)]="usersService.searchTerm" />
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table overlaid-table">
+      <div class="overlay" *ngIf="usersService.loading$ | async">
+      </div>
+      <div class="overlay-spinner" *ngIf="usersService.loading$ | async">
+        <div class="overlay-content-spinner">
+          <img class="spinner-image" src="/assets/images/loading.gif" alt="Loading..." />
+        </div>
+      </div>
+      <thead class="table-header">
+        <tr>
+          <th scope="col" sortable="username" (sort)="onSort($event)">Username</th>
+          <th scope="col" sortable="firstName" (sort)="onSort($event)">First Name</th>
+          <th scope="col" sortable="lastName" (sort)="onSort($event)">Last Name</th>
+          <th scope="col" sortable="isActive" (sort)="onSort($event)">Is Active</th>
+          <th scope="col" sortable="isAdmin" *ngIf="authService.isAdmin()" (sort)="onSort($event)">Administrator</th>
+          <th scope="col" sortable="isTutor" *ngIf="authService.isAdmin()" (sort)="onSort($event)">Tutor</th>
+          <th scope="col" sortable="isStudent" *ngIf="authService.isAdmin()" (sort)="onSort($event)">Student</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users | async">
+          <td *ngIf="!authService.isAdmin()"><ngb-highlight [result]="user.username" [term]="usersService.searchTerm"></ngb-highlight></td>
+          <!--<td *ngIf="authService.isAdmin()" class="cell-link" (click)="viewDetails(user)"><ngb-highlight [result]="user.username" [term]="usersService.searchTerm"></ngb-highlight></td>-->
+          <td><ngb-highlight [result]="user.firstName" [term]="usersService.searchTerm"></ngb-highlight></td>
+          <td><ngb-highlight [result]="user.lastName" [term]="usersService.searchTerm"></ngb-highlight></td>
+          <td>
+            <div *ngIf="user.isActive" (click)="setUserActiveStatus(user, false)">
+              <i class="fas fa-check"></i>
+            </div>
+            <div *ngIf="!user.isActive" (click)="setUserActiveStatus(user, true)">
+              <i class="fas fa-times"></i>
+            </div>
+          </td>
+          <td *ngIf="authService.isAdmin()">
+            <div *ngIf="user.isAdmin && user.isActive" (click)="setAdmin(user, false)">
+              <i class="fas fa-check"></i>
+            </div>
+            <div *ngIf="!user.isAdmin && user.isActive" (click)="setAdmin(user, true)">
+              <i class="fas fa-times"></i>
+            </div>
+          </td>
+          <td *ngIf="authService.isAdmin()">
+            <div *ngIf="user.isTutor && user.isActive" (click)="setTutor(user, false)">
+              <i class="fas fa-check"></i>
+            </div>
+            <div *ngIf="!user.isTutor && user.isActive" (click)="setTutor(user, true)">
+              <i class="fas fa-times"></i>
+            </div>
+          </td>
+          <td *ngIf="authService.isAdmin()">
+            <div *ngIf="user.isStudent && user.isActive" (click)="setStudent(user, false)">
+              <i class="fas fa-check"></i>
+            </div>
+            <div *ngIf="!user.isStudent && user.isActive" (click)="setStudent(user, true)">
+              <i class="fas fa-times"></i>
+            </div>
+          </td>
+          <td *ngIf="authService.isAdmin()">
+            <div *ngIf="user.isStudent && user.isActive" (click)="setStudent(user, false)">
+              <i class="fas fa-check"></i>
+            </div>
+            <div *ngIf="!user.isStudent && user.isActive" (click)="setStudent(user, true)">
+              <i class="fas fa-times"></i>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="flex justify-content-between p-2 d-md-none">
+    <ngb-pagination [collectionSize]="usersService.total$ | async"
+                    [(page)]="usersService.page"
+                    [pageSize]="usersService.pageSize"
+                    [maxSize]="1">
+    </ngb-pagination>
+  </div>
+
+  <div class="justify-content-between p-2 d-none d-md-flex">
+    <div class="flex justify-content-between p-2">
+      {{pageDescription(total | async)}}
+    </div>
+
+    <ngb-pagination [collectionSize]="usersService.total$ | async"
+                    [(page)]="usersService.page"
+                    [pageSize]="usersService.pageSize"
+                    [maxSize]="5">
+    </ngb-pagination>
+
+    <select class="custom-select" style="width: auto" name="pageSize" [(ngModel)]="usersService.pageSize">
+      <option [value]="10">10 items per page</option>
+      <option [value]="15">15 items per page</option>
+      <option [value]="20">20 items per page</option>
+    </select>
+  </div>
+
+</form>

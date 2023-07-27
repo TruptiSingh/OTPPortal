@@ -6,7 +6,7 @@ import { UsersApiService } from '../api-services/users-api/users-api.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IUserAdminSearchResult } from 'src/app/interfaces/IUserAdminSearchResult.interface';
 import { IUserAdmin } from 'src/app/interfaces/UserAdmin.iterface';
-import { ErrorDialogComponent } from 'src/app/components/error-dialog/error-dialog/error-dialog.component';
+import { ErrorDialogComponent } from 'src/app/components/error-dialog/error-dialog.component';
 
 interface State {
   page: number;

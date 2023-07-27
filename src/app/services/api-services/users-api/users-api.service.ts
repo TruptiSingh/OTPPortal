@@ -6,6 +6,7 @@ import { environment } from "src/environments/environment";
 import { AuthService } from "../../authentication/auth.service";
 import { BaseService } from "../../base.service";
 
+@Injectable({ providedIn: 'root' })
 export class UsersApiService extends BaseService{
 
     constructor(private httpClient: HttpClient,

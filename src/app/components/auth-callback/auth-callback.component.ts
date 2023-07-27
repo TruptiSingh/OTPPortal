@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-auth-callback',
   templateUrl: './auth-callback.component.html',
-  styleUrls: ['./auth-callback.component.scss']
+  styleUrls: ['./auth-callback.component.css']
 })
 export class AuthCallbackComponent implements OnInit {
 
