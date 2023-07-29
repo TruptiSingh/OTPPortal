@@ -9,26 +9,30 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AuthCallbackComponent implements OnInit {
 
-    error: boolean;
+  error: boolean;
 
-    constructor(private authService: AuthService,
-                private router: Router,
-                private route: ActivatedRoute) {}
+  constructor(private authService: AuthService,
+    private router: Router,
+    private route: ActivatedRoute) { }
 
-    async ngOnInit() {
+  async ngOnInit() {
 
-      // check for error
-      if (this.route.snapshot.fragment &&
-          this.route.snapshot.fragment.indexOf('error') >= 0) {
-         this.error = true;
-         return;
-      }
-
-      try {
-        await this.authService.completeAuthentication();
-      } catch (error) {
-      }
-
-      this.router.navigate(['/']);
+    // check for error
+    if (this.route.snapshot.fragment &&
+      this.route.snapshot.fragment.indexOf('error') >= 0) {
+      this.error = true;
+      return;
     }
+
+    try {
+      await this.authService.completeAuthentication();
+    } catch (error) {
+    }
+
+    if (this.authService.isAuthenticated() && this.authService.isTutor()) {
+      this.router.navigate(['/profile']);
+    }
+
+    this.router.navigate(['/']);
+  }
 }

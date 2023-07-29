@@ -16,6 +16,7 @@ import { UsersService } from './services/user-services/users.service';
 import { UsersApiService } from './services/api-services/users-api/users-api.service';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HomeComponent } from './components/home/home.component';
     AuthCallbackComponent,
     NgbdSortableHeader,
     UserAdministrationComponent,
-    HomeComponent
+    HomeComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
