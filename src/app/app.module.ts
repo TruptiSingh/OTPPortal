@@ -17,6 +17,7 @@ import { UsersApiService } from './services/api-services/users-api/users-api.ser
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { EditTutorProfileComponent } from './components/edit-tutor-profile/edit-tutor-profile.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     NgbdSortableHeader,
     UserAdministrationComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    EditTutorProfileComponent
   ],
   imports: [
     BrowserModule,

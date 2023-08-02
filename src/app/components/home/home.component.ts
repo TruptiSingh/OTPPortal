@@ -14,12 +14,13 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     if (this.authService.isAuthenticated()) {
       if (this.authService.isAdmin()) {
         this.router.navigate(['/user-administration']);
       }
       else if (this.authService.isTutor()) {
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/edit-tutor-profile']);
       }
     }
     else {

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UserAdministrationComponent } from './components/administrative-components/user-administration/user-administration.component';
 import { AuthCallbackComponent } from './components/auth-callback/auth-callback.component';
+import { EditTutorProfileComponent } from './components/edit-tutor-profile/edit-tutor-profile.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AuthGuard } from './services/authentication/auth.guard.service';
@@ -25,6 +26,11 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
+    //canActivate: [AuthGuard]
+  },
+  {
+    path: 'edit-tutor-profile',
+    component: EditTutorProfileComponent,
     //canActivate: [AuthGuard]
   },
   {

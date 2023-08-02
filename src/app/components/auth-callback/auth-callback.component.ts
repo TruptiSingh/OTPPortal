@@ -26,12 +26,13 @@ export class AuthCallbackComponent implements OnInit {
 
     try {
       await this.authService.completeAuthentication();
-    } catch (error) {
+    }
+    catch (error) {
     }
 
-    if (this.authService.isAuthenticated() && this.authService.isTutor()) {
-      this.router.navigate(['/profile']);
-    }
+    //if (this.authService.isAuthenticated() && this.authService.isTutor()) {
+    //  this.router.navigate(['/profile']);
+    //}
 
     this.router.navigate(['/']);
   }
