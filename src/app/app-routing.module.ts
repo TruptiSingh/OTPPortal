@@ -6,6 +6,7 @@ import { EditTutorProfileComponent } from './components/edit-tutor-profile/edit-
 import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AuthGuard } from './services/authentication/auth.guard.service';
+import { CreateTutorComponent } from './components/create-tutor/create-tutor.component';
 
 const routes: Routes = [
 
@@ -33,6 +34,12 @@ const routes: Routes = [
     component: EditTutorProfileComponent,
     //canActivate: [AuthGuard]
   },
+  {
+    path: 'create-tutor',
+    component: CreateTutorComponent,
+    //canActivate: [AuthGuard]
+  },
+
   {
     path: '',
     component: HomeComponent

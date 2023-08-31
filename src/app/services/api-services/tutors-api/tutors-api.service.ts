@@ -4,10 +4,12 @@ import { catchError } from "rxjs/operators";
 import { environment } from '../../../../environments/environment';
 import { AuthService } from '../../authentication/auth.service';
 import { BaseService } from '../../base.service';
+import { ICreateTutor } from '../../../interfaces/ICreateTutor.interface';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class TutorsApiService extends BaseService {
 
   constructor(private httpClient: HttpClient,
@@ -25,5 +27,10 @@ export class TutorsApiService extends BaseService {
       .pipe(
         catchError(this.handleError.bind(this))
       );
+  }
+
+  createTutor(tutor) {
+    return this.httpClient
+      .post(`${environment.apiUrl}/Tutors`, tutor);
   }
 }

@@ -1,0 +1,100 @@
+<form (ngSubmit)="onSubmit()">
+
+  <div class="form-group col-lg-2">
+
+    <label for="bio">Bio</label>
+    <textarea class="form-control" id="bio" rows="3" [(ngModel)]="tutor.bio" name="bio"></textarea>
+
+  </div>
+
+  <div class="form-group col-lg-2">
+
+    <label for="introduction">Introduction</label>
+    <textarea class="form-control" id="introduction" rows="3" [(ngModel)]="tutor.introduction" name="introduction"></textarea>
+
+  </div>
+
+  <div class="form-group col-lg-2">
+
+    <label for="pricePerHour">Price Per Hour</label>
+    <input type="number" class="form-control" id="pricePerHour" [(ngModel)]="tutor.pricePerHour" name="pricePerHour">
+
+  </div>
+
+  <div class="form-group">
+
+    <label for="educationLevel">Education Level</label>
+    <select class="form-control" id="educationLevel" [(ngModel)]="tutor.tutorEducationLevels[0].educationLevelId" name="educationLevel">
+
+      <option value="1">Primary</option>
+      <option value="2">Secondary</option>
+      <option value="3">GCSE</option>
+      <option value="4">A Level</option>
+      <option value="5">University</option>
+      <option value="6">Masters</option>
+
+    </select>
+
+  </div>
+
+  <div class="form-group">
+
+    <label for="subject">Subject</label>
+    <select class="form-control" id="subject" [(ngModel)]="tutor.tutorSubjects[0].subjectId" name="subject" multiple>
+
+      <option value="1">English</option>
+      <option value="2">Maths</option>
+      <option value="3">Physics</option>
+      <option value="4">Chemistry</option>
+      <option value="5">Biology</option>
+
+    </select>
+
+    <div class="form-group">
+
+      <label for="teachingPreference">Teaching Preference</label>
+      <select class="form-control" id="teachingPreference" [(ngModel)]="tutor.tutorTeachingPreferences[0].teachingPreferenceId" name="teachingPreference" multiple>
+
+        <option value="1">Online</option>
+        <option value="2">Student's Home'</option>
+        <option value="3">Tutor's Home'</option>
+
+      </select>
+
+    </div>
+
+    <div class="form-group">
+
+      <label for="availability">Availability - Day</label>
+      <select class="form-control" id="availabilityDay" [(ngModel)]="tutor.tutorAvailabilities[0].weekDayId" name="availabilityDay" multiple>
+
+        <option value="1">Sunday</option>
+        <option value="2">Monday</option>
+        <option value="3">Tuesday</option>
+        <option value="4">Wednesday</option>
+        <option value="5">Thursday</option>
+        <option value="6">Friday</option>
+        <option value="7">Saturday</option>
+
+      </select>
+
+    </div>
+
+    <div class="form-group">
+
+      <label for="availability">Availability - Time of Day</label>
+      <select class="form-control" id="availabilityTime" [(ngModel)]="tutor.tutorAvailabilities[0].timeRangeId" name="availabilityTime" multiple>
+
+        <option value="1">Before 12</option>
+        <option value="2">12 - 5 pm</option>
+        <option value="3">After 5 pm</option>
+
+      </select>
+
+    </div>
+
+  </div>
+
+  <button type="submit" class="btn btn-primary">Create Tutor</button>
+
+</form>

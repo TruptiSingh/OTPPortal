@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { EditTutorProfileComponent } from './components/edit-tutor-profile/edit-tutor-profile.component';
+import { CreateTutorComponent } from './components/create-tutor/create-tutor.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { EditTutorProfileComponent } from './components/edit-tutor-profile/edit-
     UserAdministrationComponent,
     HomeComponent,
     ProfileComponent,
-    EditTutorProfileComponent
+    EditTutorProfileComponent,
+    CreateTutorComponent
   ],
   imports: [
     BrowserModule,
