@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <a class="navbar-brand" href="#">Complete your profile</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+    <span class="navbar-toggler-icon"></span>
+
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+
+    <ul class="navbar-nav ml-auto">
+
+      <li class="nav-item">
+
+        <span (click)="authService.logout()" class="btn btn-primary ml-2">Logout</span>
+
+      </li>
+     
+    </ul>
+
+  </div>
+
+</nav>
+
+<div class="container">
+
+  <form (ngSubmit)="onSubmit()">
+
+    <div class="form-group col-lg-4">
+
+      <label for="educationLevel">Education Level</label>
+
+      <select class="form-control" id="educationLevel" [(ngModel)]="student.educationLevelId" name="educationLevel">
+
+        <option *ngFor="let level of levels" [ngValue]="level.key">{{level.value}}</option>
+
+      </select>
+
+    </div>
+
+    <div class="form-group col-lg-4">
+
+      <label for="subject">Subjects</label>
+
+      <select multiple class="form-control" id="subject" [(ngModel)]="student.studentSubjects" name="subject">
+
+        <option *ngFor="let subject of subjects" [ngValue]="subject.id">{{subject.name}}</option>
+
+      </select>
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create Student</button>
+
+  </form>
+
+</div>

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserManager, UserManagerSettings, User } from 'oidc-client';
 import { environment } from 'src/environments/environment';
 
@@ -10,7 +11,7 @@ export class AuthService {
   private manager = new UserManager(this.getClientSettings());
   private user: User | null = null;
 
-  constructor() {
+  constructor(private router: Router) {
     this.manager.getUser().then(user => {
       this.user = user;
     });
@@ -40,7 +41,7 @@ export class AuthService {
     if (this.user != null && !this.user.expired && !this.user.profile.role) {
       this.manager.signoutRedirect();
     }
-    return true; //this.user != null && !this.user.expired && this.user.profile.role && this.user.profile.role.length > 0;
+    return true;
   }
 
   getAllRoles() {

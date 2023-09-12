@@ -1,12 +1,13 @@
-<nav *ngIf="authService.isAuthenticated()" class="d-none d-md-flex navbar navbar-expand-md navbar-light navbar-static-top p-0">
-  <a class="navbar-brand col-sm-3 col-md-2 mr-0 bg-pantone-transition" href="#">
+<router-outlet></router-outlet>
+<!--<nav *ngIf="authService.isAuthenticated()" class="d-none d-md-flex navbar navbar-expand-md navbar-light navbar-static-top p-0">
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0 bg-pantone-transition" href="#">-->
     <!--<img alt="nonacus logo" src="../assets/images/INFORMED_GENOMICS_LOGO_PRINCIPAL_TRANSPARENTE.png" class="img-fluid w-30-ns" width="200px">-->
-  </a>
+  <!--</a>
   <div class="navbar-collapse collapse" id="mainNavbar">
     <ul class="navbar-nav px-3 ml-auto">
-      <li class="nav-item d-flex flex-row align-items-center">
+      <li class="nav-item d-flex flex-row align-items-center">-->
         <!--<svg class="medium dark-svg"><use xlink:href="../assets/images/external.svg#account-outline" /></svg>-->
-      </li>
+      <!--</li>
       <li class="nav-item light-menu-item">
         <button class="btn" type="button">{{authService.name}}</button>
       </li>
@@ -19,18 +20,18 @@
 </nav>
 
 <nav *ngIf="authService.isAuthenticated()" class="d-md-none navbar navbar-expand-md navbar-dark bg-pantone-transition navbar-static-top">
-  <a class="navbar-brand mr-0 bg-pantone-570C" href="#">
+  <a class="navbar-brand mr-0 bg-pantone-570C" href="#">-->
     <!--<img alt="nonacus logo" src="../assets/images/INFORMED_GENOMICS_LOGO_PRINCIPAL_TRANSPARENTE.png" class="img-fluid w-30-ns" width="200px">-->
-  </a>
+  <!--</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#smallNavbar" aria-controls="smallNavbar" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="navbar-collapse collapse" id="smallNavbar">
-    <ul class="navbar-nav px-3 ml-auto">
+    <ul class="navbar-nav px-3 ml-auto">-->
       <!--<li class="nav-item dark-menu-item" *ngIf="authService.isNGSTechnician()">
         <a href="/ngs-administration"><i class="fas fa-vials mr-3"></i>NGS Administration</a>
       </li>-->
-      <li class="nav-item dark-menu-item non-icon-option">
+      <!--<li class="nav-item dark-menu-item non-icon-option">
         <button (click)="authService.logout()" class="btn no-icon-nav-link">Logout</button>
       </li>
     </ul>
@@ -42,13 +43,13 @@
     <nav *ngIf="authService.isAuthenticated()" class="col-md-2 d-none d-md-block bg-pantone-transition sidebar">
       <div class="sidebar-sticky">
         <ul class="nav flex-column">
-          <li class="nav-item">
+          <li class="nav-item">-->
           <!--<li class="nav-item d-flex flex-row align-items-center" *ngIf="authService.isNGSTechnician()">
             <a href="/ngs-administration"><i class="fas fa-vials mr-3"></i>NGS Administration</a>
           </li>-->
-          <li class="nav-item dark-menu-item" *ngIf="authService.isAdmin()">
+          <!--<li class="nav-item dark-menu-item" *ngIf="authService.isAdmin()">
             <a href="/user-administration"><i class="fas fa-user-friends mr-3"></i>User Admin</a>
-          </li>
+          </li>-->
           <!--<li class="nav-item dark-menu-item" *ngIf="authService.isNGSTechnician()">
             <a href="/customer-management"><i class="fas fa-building mr-3"></i>Institute Management</a>
           </li>
@@ -58,7 +59,7 @@
           <li class="nav-item dark-menu-item" *ngIf="authService.isNGSTechnician()">
             <a href="/project-management"><i class="fas fa-cogs mr-3"></i>Project Management</a>
           </li>-->
-        </ul>
+        <!--</ul>
       </div>
     </nav>
     <main role="main" class="col-md-10 px-4">
@@ -68,4 +69,4 @@
       </div>
     </main>
   </div>
-</div>
+</div>-->

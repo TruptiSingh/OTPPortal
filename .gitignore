@@ -334,3 +334,5 @@ ASALocalRun/
 /tmp
 /out-tsc
 /.angular/cache/16.1.5
+/.vs/slnx.sqlite
+/.vs/otp-portal/v17/.wsuo
