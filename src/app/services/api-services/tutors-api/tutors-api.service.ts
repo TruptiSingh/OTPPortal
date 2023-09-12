@@ -5,6 +5,7 @@ import { environment } from '../../../../environments/environment';
 import { AuthService } from '../../authentication/auth.service';
 import { BaseService } from '../../base.service';
 import { ICreateTutor } from '../../../interfaces/ICreateTutor.interface';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,6 @@ export class TutorsApiService extends BaseService {
   }
 
   getTutorAvailibility(tutorId) {
-    console.log(`${environment.apiUrl}/Tutors/TutorAvailibility/${tutorId}`);
     return this.httpClient
       .get(`${environment.apiUrl}/Tutors/TutorAvailibility/${tutorId}`,
         {
@@ -29,8 +29,28 @@ export class TutorsApiService extends BaseService {
       );
   }
 
-  createTutor(tutor) {
+  getTutorByLinkedUserId(linkedUserId) {
     return this.httpClient
-      .post(`${environment.apiUrl}/Tutors`, tutor);
+      .get(`${environment.apiUrl}/Tutors/LinkedUserId/${linkedUserId}`,
+        {
+          headers: new HttpHeaders({ Authorization: this.authService.authorizationHeaderValue }),
+        })
+      .pipe(
+        catchError(this.handleError.bind(this))
+      );
+  }
+
+  createTutor(tutor : ICreateTutor) {
+    return this.httpClient
+      .post(`${environment.apiUrl}/Tutors`, tutor,
+        {
+          headers: new HttpHeaders({ 'Content-Type': 'application/json',Authorization: this.authService.authorizationHeaderValue }),
+        })
+      .pipe(
+        catchError(err => {
+          console.log(err);
+          return throwError(err);
+        })
+      );
   }
 }

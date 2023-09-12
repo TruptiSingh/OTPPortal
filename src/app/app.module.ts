@@ -19,6 +19,8 @@ import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { EditTutorProfileComponent } from './components/edit-tutor-profile/edit-tutor-profile.component';
 import { CreateTutorComponent } from './components/create-tutor/create-tutor.component';
+import { CreateStudentComponent } from './components/create-student/create-student.component';
+import { EditStudentComponent } from './components/edit-student/edit-student.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { CreateTutorComponent } from './components/create-tutor/create-tutor.com
     HomeComponent,
     ProfileComponent,
     EditTutorProfileComponent,
-    CreateTutorComponent
+    CreateTutorComponent,
+    CreateStudentComponent,
+    EditStudentComponent
   ],
   imports: [
     BrowserModule,

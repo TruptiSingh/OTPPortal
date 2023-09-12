@@ -1,100 +1,154 @@
-<form (ngSubmit)="onSubmit()">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-  <div class="form-group col-lg-2">
+  <a class="navbar-brand" href="#">Complete your profile</a>
 
-    <label for="bio">Bio</label>
-    <textarea class="form-control" id="bio" rows="3" [(ngModel)]="tutor.bio" name="bio"></textarea>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 
+    <span class="navbar-toggler-icon"></span>
+
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+
+    <ul class="navbar-nav ml-auto">
+
+      <li class="nav-item">
+
+        <span (click)="authService.logout()" class="btn btn-primary ml-2">Logout</span>
+
+      </li>
+
+    </ul>
+    
   </div>
 
-  <div class="form-group col-lg-2">
+</nav>
 
-    <label for="introduction">Introduction</label>
-    <textarea class="form-control" id="introduction" rows="3" [(ngModel)]="tutor.introduction" name="introduction"></textarea>
+<div class="container">
 
-  </div>
+  <form (ngSubmit)="onSubmit()">
 
-  <div class="form-group col-lg-2">
+    <div class="form-group col-lg-4">
 
-    <label for="pricePerHour">Price Per Hour</label>
-    <input type="number" class="form-control" id="pricePerHour" [(ngModel)]="tutor.pricePerHour" name="pricePerHour">
+      <label for="bio">Bio</label>
 
-  </div>
+      <textarea class="form-control" id="bio" rows="3" [(ngModel)]="tutor.bio" name="bio"></textarea>
 
-  <div class="form-group">
+    </div>
 
-    <label for="educationLevel">Education Level</label>
-    <select class="form-control" id="educationLevel" [(ngModel)]="tutor.tutorEducationLevels[0].educationLevelId" name="educationLevel">
+    <div class="form-group col-lg-4">
 
-      <option value="1">Primary</option>
-      <option value="2">Secondary</option>
-      <option value="3">GCSE</option>
-      <option value="4">A Level</option>
-      <option value="5">University</option>
-      <option value="6">Masters</option>
+      <label for="introduction">Introduction</label>
 
-    </select>
+      <textarea class="form-control" id="introduction" rows="3" [(ngModel)]="tutor.introduction" name="introduction"></textarea>
 
-  </div>
+    </div>
 
-  <div class="form-group">
+    <div class="form-group col-lg-4">
 
-    <label for="subject">Subject</label>
-    <select class="form-control" id="subject" [(ngModel)]="tutor.tutorSubjects[0].subjectId" name="subject" multiple>
+      <label for="pricePerHour">Price Per Hour</label>
 
-      <option value="1">English</option>
-      <option value="2">Maths</option>
-      <option value="3">Physics</option>
-      <option value="4">Chemistry</option>
-      <option value="5">Biology</option>
+      <input type="number" class="form-control" id="pricePerHour" [(ngModel)]="tutor.pricePerHour" name="pricePerHour">
 
-    </select>
+    </div>
 
-    <div class="form-group">
+    <div class="form-group col-lg-4">
 
-      <label for="teachingPreference">Teaching Preference</label>
-      <select class="form-control" id="teachingPreference" [(ngModel)]="tutor.tutorTeachingPreferences[0].teachingPreferenceId" name="teachingPreference" multiple>
+      <label for="educationLevel">Education Levels</label>
 
-        <option value="1">Online</option>
-        <option value="2">Student's Home'</option>
-        <option value="3">Tutor's Home'</option>
+      <select multiple class="form-control" id="educationLevel" [(ngModel)]="tutor.tutorEducationLevels" name="educationLevel">
+
+        <option *ngFor="let level of levels" [ngValue]="level.key">{{level.value}}</option>
 
       </select>
 
     </div>
 
-    <div class="form-group">
+    <div class="form-group col-lg-4">
 
-      <label for="availability">Availability - Day</label>
-      <select class="form-control" id="availabilityDay" [(ngModel)]="tutor.tutorAvailabilities[0].weekDayId" name="availabilityDay" multiple>
+      <label for="subject">Subjects</label>
 
-        <option value="1">Sunday</option>
-        <option value="2">Monday</option>
-        <option value="3">Tuesday</option>
-        <option value="4">Wednesday</option>
-        <option value="5">Thursday</option>
-        <option value="6">Friday</option>
-        <option value="7">Saturday</option>
+      <select multiple class="form-control" id="subject" [(ngModel)]="tutor.tutorSubjects" name="subject">
+
+        <option *ngFor="let subject of subjects" [ngValue]="subject.id">{{subject.name}}</option>
 
       </select>
 
     </div>
 
-    <div class="form-group">
+    <div class="form-group col-lg-4">
 
-      <label for="availability">Availability - Time of Day</label>
-      <select class="form-control" id="availabilityTime" [(ngModel)]="tutor.tutorAvailabilities[0].timeRangeId" name="availabilityTime" multiple>
+      <label for="teachingPreference">Teaching Preferences</label>
 
-        <option value="1">Before 12</option>
-        <option value="2">12 - 5 pm</option>
-        <option value="3">After 5 pm</option>
+      <select multiple class="form-control" id="teachingPreference" [(ngModel)]="tutor.tutorTeachingPreferences" name="teachingPreference">
+
+        <option *ngFor="let teachingPreference of teachingPreferences" [ngValue]="teachingPreference.key">{{teachingPreference.value}}</option>
 
       </select>
 
     </div>
 
-  </div>
+    <div class="form-group col-lg-4">
 
-  <button type="submit" class="btn btn-primary">Create Tutor</button>
+      <label for="availableDay">Select Weekdays and Time Range for each Day</label>
 
-</form>
+      <div class="form-check" *ngFor="let day of availableDays; let i = index">
+
+        <input type="checkbox" value="{{day.key}}" id="day{{day.key}}" name="day{{day.key}}" class="form-check-input" (change)="onSelectedDayChanged($event)" />
+
+        <label class="form-check-label" for="{{day.key}}">{{day.value}} </label>
+
+        <select style="margin: 10px" multiple class="form-control" id="timeRange{{day.key}}" name="timeRange{{day.key}}" *ngIf="day.key == 1" [(ngModel)]="selectedTimeRanges1">
+
+          <option *ngFor="let timeRange of timeRanges" [ngValue]="timeRange.key">{{timeRange.value}}</option>
+
+        </select>
+
+        <select style="margin: 10px" multiple class="form-control" id="timeRange{{day.key}}" name="timeRange{{day.key}}" *ngIf="day.key == 2" [(ngModel)]="selectedTimeRanges2">
+
+          <option *ngFor="let timeRange of timeRanges" [ngValue]="timeRange.key">{{timeRange.value}}</option>
+
+        </select>
+
+        <select style="margin: 10px" multiple class="form-control" id="timeRange{{day.key}}" name="timeRange{{day.key}}" *ngIf="day.key ==3" [(ngModel)]="selectedTimeRanges3">
+
+          <option *ngFor="let timeRange of timeRanges" [ngValue]="timeRange.key">{{timeRange.value}}</option>
+
+        </select>
+
+        <select style="margin: 10px" multiple class="form-control" id="timeRange{{day.key}}" name="timeRange{{day.key}}" *ngIf="day.key == 4" [(ngModel)]="selectedTimeRanges4">
+
+          <option *ngFor="let timeRange of timeRanges" [ngValue]="timeRange.key">{{timeRange.value}}</option>
+
+        </select>
+
+        <select style="margin: 10px" multiple class="form-control" id="timeRange{{day.key}}" name="timeRange{{day.key}}" *ngIf="day.key == 5" [(ngModel)]="selectedTimeRanges5">
+
+          <option *ngFor="let timeRange of timeRanges" [ngValue]="timeRange.key">{{timeRange.value}}</option>
+
+        </select>
+
+        <select style="margin: 10px" multiple class="form-control" id="timeRange{{day.key}}" name="timeRange{{day.key}}" *ngIf="day.key == 6" [(ngModel)]="selectedTimeRanges6">
+
+          <option *ngFor="let timeRange of timeRanges" [ngValue]="timeRange.key">{{timeRange.value}}</option>
+
+        </select>
+
+        <select style="margin: 10px" multiple class="form-control" id="timeRange{{day.key}}" name="timeRange{{day.key}}" *ngIf="day.key == 7" [(ngModel)]="selectedTimeRanges7">
+
+          <option *ngFor="let timeRange of timeRanges" [ngValue]="timeRange.key">{{timeRange.value}}</option>
+
+        </select>
+
+      </div>
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create Tutor</button>
+
+  </form>
+
+</div>
+
+
