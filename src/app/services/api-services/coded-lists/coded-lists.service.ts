@@ -32,4 +32,12 @@ export class CodedListsService {
   getDocumentTypes() {
     return this.http.get(`${environment.apiUrl}/codedLists/documentTypes`);
   }
+
+  getDocumentTypesForStudent() {
+    return this.http.get(`${environment.apiUrl}/codedLists/documentTypesForStudent`);
+  }
+
+  getUserTypes() {
+    return this.http.get(`${environment.apiUrl}/codedLists/userTypes`);
+  }
 }

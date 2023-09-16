@@ -9,6 +9,7 @@ import { AuthGuard } from './services/authentication/auth.guard.service';
 import { CreateTutorComponent } from './components/create-tutor/create-tutor.component';
 import { CreateStudentComponent } from './components/create-student/create-student.component';
 import { EditStudentComponent } from './components/edit-student/edit-student.component';
+import { UploadFilesAndImageComponent } from './components/upload-files-and-image/upload-files-and-image.component';
 
 const routes: Routes = [
 
@@ -56,6 +57,12 @@ const routes: Routes = [
   {
     path: 'edit-student',
     component: EditStudentComponent,
+    //canActivate: [AuthGuard]
+  },
+
+  {
+    path: 'upload-files-image',
+    component: UploadFilesAndImageComponent,
     //canActivate: [AuthGuard]
   },
 

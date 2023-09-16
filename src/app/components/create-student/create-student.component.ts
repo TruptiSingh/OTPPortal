@@ -56,15 +56,16 @@ export class CreateStudentComponent implements OnInit {
 
   onSubmit() {
 
-    this.studentService.createStudent(this.student).subscribe(
-      response => {
-        console.log('Student created successfully', response);
-        this.router.navigate(['/edit-student']);
-      },
-      error => {
-        console.error('Error creating student', error);
-      }
-    );
+    this.router.navigate(['/upload-files-image'], { queryParams: { userId: 14, userType: 1 } });
 
+    //this.studentService.createStudent(this.student).subscribe(
+    //  response => {
+    //    console.log('Student created successfully', response);
+    //    this.router.navigate(['/upload-files-image'], { queryParams: { userId: response, userType: 1 } });
+    //  },
+    //  error => {
+    //    console.error('Error creating student', error);
+    //  }
+    //);
   }
 }

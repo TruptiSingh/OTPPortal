@@ -21,6 +21,8 @@ import { EditTutorProfileComponent } from './components/edit-tutor-profile/edit-
 import { CreateTutorComponent } from './components/create-tutor/create-tutor.component';
 import { CreateStudentComponent } from './components/create-student/create-student.component';
 import { EditStudentComponent } from './components/edit-student/edit-student.component';
+import { StoreUserFileComponent } from './components/store-user-file/store-user-file.component';
+import { UploadFilesAndImageComponent } from './components/upload-files-and-image/upload-files-and-image.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { EditStudentComponent } from './components/edit-student/edit-student.com
     EditTutorProfileComponent,
     CreateTutorComponent,
     CreateStudentComponent,
-    EditStudentComponent
+    EditStudentComponent,
+    StoreUserFileComponent,
+    UploadFilesAndImageComponent
   ],
   imports: [
     BrowserModule,

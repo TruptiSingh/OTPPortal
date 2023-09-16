@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <a class="navbar-brand" href="#">Upload Image and Documents</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+    <span class="navbar-toggler-icon"></span>
+
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+
+    <ul class="navbar-nav ml-auto">
+
+      <li class="nav-item">
+
+        <span (click)="authService.logout()" class="btn btn-primary ml-2">Logout</span>
+
+      </li>
+
+    </ul>
+
+  </div>
+
+</nav>
+
+
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-lg-4">
+
+      <div class="card">
+
+        <img [src]="imageToShow" id="profileImage" class="card-img-top rounded img-fluid float-start"
+             alt="Profile Image" *ngIf="!isImageLoading; else noImageFound" width="200px" height="200px" />
+        <ng-template #noImageFound>
+          <img src="" alt="Fallbackimage">
+        </ng-template>
+      </div>
+
+    </div>
+
+  </div>
+
+  <br />
+
+  <div class="row">
+
+    <div class="col-lg-4">
+
+      <span class="text text-primary">Select image</span>
+      <input type="file" id="userImage" name="userImage" class="form-control" (change)="onImageUpload($event)"style="visibility:visible" />
+
+    </div>
+
+  </div>
+
+</div>
