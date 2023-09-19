@@ -1,1 +1,102 @@
-<p>edit-student works!</p>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <a class="navbar-brand" href="#">Edit Profile</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+    <span class="navbar-toggler-icon"></span>
+
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+
+    <ul class="navbar-nav ml-auto">
+
+      <li class="nav-item">
+
+        <span (click)="authService.logout()" class="btn btn-primary ml-2">Logout</span>
+
+      </li>
+
+    </ul>
+
+  </div>
+
+</nav>
+
+
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-lg-4">
+
+      <div class="card">
+
+        <img [src]="imageToShow" id="profileImage" class="card-img-top rounded img-fluid float-start"
+             alt="Profile Image" *ngIf="!isImageLoading; else noImageFound" width="200px" height="200px" />
+
+        <ng-template #noImageFound>
+
+          <img src="" alt="Fallbackimage">
+
+        </ng-template>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <br />
+
+  <div class="row">
+
+    <div class="col-lg-4">
+
+      <label for="userImage" class="text text-primary">Select image</label>
+
+      <input type="file" id="userImage" name="userImage" class="form-control" required aria-describedby="userImage" (change)="onImageUpload($event)" style="visibility:visible" />
+
+    </div>
+
+  </div>
+
+  <br />
+
+  <label for="message" class="text text-success">{{message}}</label>
+
+  <br />
+
+  <form (ngSubmit)="onSubmit()">
+
+    <div class="form-group col-lg-4">
+
+      <label for="educationLevel">Education Level</label>
+
+      <select class="form-control" required id="educationLevel" [(ngModel)]="student.educationLevelId" name="educationLevel">
+
+        <option *ngFor="let level of levels" [ngValue]="level.key">{{level.value}}</option>
+
+      </select>
+
+    </div>
+
+    <div class="form-group col-lg-4">
+
+      <label for="subject">Subjects</label>
+
+      <select multiple required class="form-control" id="subject" [(ngModel)]="student.subjectIds" name="subject">
+
+        <option *ngFor="let subject of subjects" [ngValue]="subject.id">{{subject.name}}</option>
+
+      </select>
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+
+  </form>
+
+</div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ICreateStudent } from '../../interfaces/ICreateStudent.interface';
+import { ICreateOrUpdateStudent } from '../../interfaces/ICreateOrUpdateStudent.interface';
 import { CodedListsService } from '../../services/api-services/coded-lists/coded-lists.service';
 import { SubjectsApiService } from '../../services/api-services/subjects/subjects-api.service';
 import { AuthService } from '../../services/authentication/auth.service';
@@ -19,11 +19,12 @@ export class CreateStudentComponent implements OnInit {
     private codedListsService: CodedListsService,
     private subjectsService: SubjectsApiService) { }
 
-  student: ICreateStudent = {
+  student: ICreateOrUpdateStudent = {
 
       linkedUserId: '',
       educationLevelId: 0,
-      studentSubjects: []
+      studentSubjects: [],
+      studentId: 0
   }
 
   subjects: any = [];
@@ -56,16 +57,17 @@ export class CreateStudentComponent implements OnInit {
 
   onSubmit() {
 
-    this.router.navigate(['/upload-files-image'], { queryParams: { userId: 14, userType: 1 } });
+    //this.router.navigate(['/upload-files-image'], { queryParams: { userId: 17, userType: 1 } });
 
-    //this.studentService.createStudent(this.student).subscribe(
-    //  response => {
-    //    console.log('Student created successfully', response);
-    //    this.router.navigate(['/upload-files-image'], { queryParams: { userId: response, userType: 1 } });
-    //  },
-    //  error => {
-    //    console.error('Error creating student', error);
-    //  }
-    //);
+    this.studentService.createStudent(this.student).subscribe(
+      response => {
+        console.log('Student created successfully', response);
+        this.router.navigate(['/upload-files-image']);
+        //this.router.navigate(['/upload-files-image'], { queryParams: { userId: response, userType: 1 } });
+      },
+      error => {
+        console.error('Error creating student', error);
+      }
+    );
   }
 }

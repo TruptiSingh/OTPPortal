@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { ICreateStudent } from '../../interfaces/ICreateStudent.interface';
+import { ICreateOrUpdateStudent } from '../../interfaces/ICreateOrUpdateStudent.interface';
 import { AuthService } from '../authentication/auth.service';
 import { BaseService } from '../base.service';
 import { catchError } from "rxjs/operators";
@@ -28,9 +28,23 @@ export class StudentApiService extends BaseService {
       );
   }
 
-  createStudent(student: ICreateStudent) {
+  createStudent(student: ICreateOrUpdateStudent) {
     return this.httpClient
       .post(`${environment.apiUrl}/Students`, student,
+        {
+          headers: new HttpHeaders({ 'Content-Type': 'application/json', Authorization: this.authService.authorizationHeaderValue }),
+        })
+      .pipe(
+        catchError(err => {
+          console.log(err);
+          return throwError(err);
+        })
+      );
+  }
+
+  updateStudent(student: ICreateOrUpdateStudent) {
+    return this.httpClient
+      .put(`${environment.apiUrl}/Students`, student,
         {
           headers: new HttpHeaders({ 'Content-Type': 'application/json', Authorization: this.authService.authorizationHeaderValue }),
         })

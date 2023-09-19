@@ -33,7 +33,7 @@
 
       <label for="educationLevel">Education Level</label>
 
-      <select class="form-control" id="educationLevel" [(ngModel)]="student.educationLevelId" name="educationLevel">
+      <select class="form-control" required id="educationLevel" [(ngModel)]="student.educationLevelId" name="educationLevel">
 
         <option *ngFor="let level of levels" [ngValue]="level.key">{{level.value}}</option>
 
@@ -45,7 +45,7 @@
 
       <label for="subject">Subjects</label>
 
-      <select multiple class="form-control" id="subject" [(ngModel)]="student.studentSubjects" name="subject">
+      <select multiple required class="form-control" id="subject" [(ngModel)]="student.studentSubjects" name="subject">
 
         <option *ngFor="let subject of subjects" [ngValue]="subject.id">{{subject.name}}</option>
 
@@ -53,7 +53,7 @@
 
     </div>
 
-    <button type="submit" class="btn btn-primary">Create Student</button>
+    <button type="submit" class="btn btn-primary">Next</button>
 
   </form>
 

@@ -51,11 +51,50 @@
 
     <div class="col-lg-4">
 
-      <span class="text text-primary">Select image</span>
-      <input type="file" id="userImage" name="userImage" class="form-control" (change)="onImageUpload($event)"style="visibility:visible" />
+      <label for="userImage" class="text text-primary">Select image</label>
+
+      <input type="file" id="userImage" name="userImage" class="form-control" required aria-describedby="userImage" (change)="onImageUpload($event)" style="visibility:visible" />
 
     </div>
 
   </div>
+
+  <div class="row">
+
+    <div class="col-lg-4">
+
+      <label for="documentTypeId" class="text text-primary">Select Document Type</label>
+
+      <select class="form-control" id="documentTypeId" [(ngModel)]="documentTypeId" name="documentTypeId">
+
+        <option *ngFor="let documentType of documentTypes" [ngValue]="documentType.key">{{documentType.value}}</option>
+
+      </select>
+
+    </div>
+
+  </div>
+
+  <br />
+
+  <div class="row">
+
+    <div class="col-lg-4">
+
+      <label for="userDocument" class="text text-primary">Select Document</label>
+
+      <input type="file" id="userDocument" name="userDocument" class="form-control" required aria-describedby="userDocument" (change)="onFileUpload($event)" style="visibility:visible" />
+
+    </div>
+
+  </div>
+
+  <br />
+
+  <label for="userDocument" class="text text-success">{{message}}</label>
+
+  <br />
+
+  <button type="button" class="btn btn-primary" (click)="onSubmit()">Complete</button>
 
 </div>

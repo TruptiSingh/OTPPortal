@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/authentication/auth.service';
 import { Router } from '@angular/router';
 import { TutorsApiService } from '../../services/api-services/tutors-api/tutors-api.service';
-import { ICreateTutor } from '../../interfaces/ICreateTutor.interface';
+import { ICreateOrUpdateTutor } from '../../interfaces/ICreateOrUpdateTutor.interface';
 import { CodedListsService } from '../../services/api-services/coded-lists/coded-lists.service';
 import { SubjectsApiService } from '../../services/api-services/subjects/subjects-api.service';
 
@@ -35,7 +35,7 @@ export class CreateTutorComponent implements OnInit {
   selectedTimeRanges7: any = [];
   selectedWeekDays: any = [];
 
-  tutor: ICreateTutor = {
+  tutor: ICreateOrUpdateTutor = {
     linkedUserId: '',
     bio: '',
     introduction: '',
@@ -135,11 +135,9 @@ export class CreateTutorComponent implements OnInit {
   }
 
   onSubmit() {
-    //console.log(this.selectedWeekDays);
-    //console.log(this.selectedTimeRanges1);
-    //console.log(this.selectedTimeRanges2);
-    //console.log(this.selectedTimeRanges3);
 
+    //this.router.navigate(['/upload-files-image'], { queryParams: { userId: 1, userType: 2 } });
+    
     for (let i = 0; i < this.selectedWeekDays.length; i++) {
 
       if (this.selectedTimeRanges1.length > 0 && this.selectedWeekDays[i] == 1) {
@@ -212,7 +210,8 @@ export class CreateTutorComponent implements OnInit {
     this.tutorService.createTutor(this.tutor).subscribe(
       response => {
         console.log('Tutor created successfully', response);
-        this.router.navigate(['/edit-tutor-profile']);
+        this.router.navigate(['/upload-files-image']);
+        //this.router.navigate(['/upload-files-image'], { queryParams: { userId: response, userType: 2 } });
       },
       error => {
         console.error('Error creating tutor', error);

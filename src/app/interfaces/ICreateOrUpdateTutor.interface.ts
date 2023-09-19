@@ -1,12 +1,12 @@
 import { ITutorAvailibility } from "./ITutorAvailibilty.interface";
 
-export interface ICreateTutor {
+export interface ICreateOrUpdateTutor {
   linkedUserId: string;
   bio: string;
   introduction: string;
   pricePerHour: number;
-  tutorEducationLevels: [];
-  tutorSubjects: [];
-  tutorTeachingPreferences: [];
+  tutorEducationLevels: number[];
+  tutorSubjects: number[];
+  tutorTeachingPreferences: number[];
   tutorAvailibilities: ITutorAvailibility[];
 }

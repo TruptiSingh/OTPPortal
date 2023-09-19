@@ -29,13 +29,11 @@ export class UserFilesApiService extends BaseService {
       formData.append('userDocumentFile', storeUserFile.userDocumentFile);
     }
 
-    if (storeUserFile.documentFile) {
-      formData.append('documentFile', new Blob([storeUserFile.documentFile]), 'document.blob');
-    }
+    console.log(storeUserFile);
 
     return this.httpClient.post(`${environment.apiUrl}/Documents`, formData,
       {
-        headers: new HttpHeaders({ 'Content-Type': 'application/json', Authorization: this.authService.authorizationHeaderValue }),
+        headers: new HttpHeaders({ Authorization: this.authService.authorizationHeaderValue }),
       })
       .pipe(
         catchError(err => {

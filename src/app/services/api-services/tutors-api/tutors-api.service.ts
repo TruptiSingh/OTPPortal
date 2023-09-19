@@ -4,7 +4,7 @@ import { catchError } from "rxjs/operators";
 import { environment } from '../../../../environments/environment';
 import { AuthService } from '../../authentication/auth.service';
 import { BaseService } from '../../base.service';
-import { ICreateTutor } from '../../../interfaces/ICreateTutor.interface';
+import { ICreateOrUpdateTutor } from '../../../interfaces/ICreateOrUpdateTutor.interface';
 import { throwError } from 'rxjs';
 
 @Injectable({
@@ -40,11 +40,25 @@ export class TutorsApiService extends BaseService {
       );
   }
 
-  createTutor(tutor : ICreateTutor) {
+  createTutor(tutor : ICreateOrUpdateTutor) {
     return this.httpClient
       .post(`${environment.apiUrl}/Tutors`, tutor,
         {
           headers: new HttpHeaders({ 'Content-Type': 'application/json',Authorization: this.authService.authorizationHeaderValue }),
+        })
+      .pipe(
+        catchError(err => {
+          console.log(err);
+          return throwError(err);
+        })
+      );
+  }
+
+  updateTutor(tutor: ICreateOrUpdateTutor) {
+    return this.httpClient
+      .put(`${environment.apiUrl}/Tutors`, tutor,
+        {
+          headers: new HttpHeaders({Authorization: this.authService.authorizationHeaderValue }),
         })
       .pipe(
         catchError(err => {
