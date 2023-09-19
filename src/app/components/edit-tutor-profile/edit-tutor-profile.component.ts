@@ -305,10 +305,7 @@ export class EditTutorProfileComponent implements OnInit {
 
         for (let j = 0; j < this.selectedTimeRanges1.length; j++) {
 
-          if (this.tutorToUpdate.tutorAvailibilities.some(function (ta) { return (ta.timeRangeId !== this.selectedTimeRanges1[j] && ta.weekDayId !== this.selectedWeekDays[i] ) })) {
-
-            this.tutorToUpdate.tutorAvailibilities.push({ weekDayId: this.selectedWeekDays[i], timeRangeId: this.selectedTimeRanges1[j] });
-          }
+          this.tutorToUpdate.tutorAvailibilities.push({ weekDayId: this.selectedWeekDays[i], timeRangeId: this.selectedTimeRanges1[j] });
         }
 
       }
@@ -317,10 +314,7 @@ export class EditTutorProfileComponent implements OnInit {
 
         for (let j = 0; j < this.selectedTimeRanges2.length; j++) {
 
-          if (this.tutorToUpdate.tutorAvailibilities.some(function (ta) { return (ta.timeRangeId !== this.selectedTimeRanges2[j] && ta.weekDayId !== this.selectedWeekDays[i]) })) {
-
-            this.tutorToUpdate.tutorAvailibilities.push({ weekDayId: this.selectedWeekDays[i], timeRangeId: this.selectedTimeRanges2[j] });
-          }
+          this.tutorToUpdate.tutorAvailibilities.push({ weekDayId: this.selectedWeekDays[i], timeRangeId: this.selectedTimeRanges2[j] });
         }
 
       }
