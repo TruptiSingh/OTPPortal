@@ -5,11 +5,11 @@ import { AuthCallbackComponent } from './components/auth-callback/auth-callback.
 import { EditTutorProfileComponent } from './components/edit-tutor-profile/edit-tutor-profile.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { AuthGuard } from './services/authentication/auth.guard.service';
 import { CreateTutorComponent } from './components/create-tutor/create-tutor.component';
 import { CreateStudentComponent } from './components/create-student/create-student.component';
 import { EditStudentComponent } from './components/edit-student/edit-student.component';
 import { UploadFilesAndImageComponent } from './components/upload-files-and-image/upload-files-and-image.component';
+import { SearchTutorComponent } from './components/search-tutor/search-tutor.component';
 
 const routes: Routes = [
 
@@ -63,6 +63,12 @@ const routes: Routes = [
   {
     path: 'upload-files-image',
     component: UploadFilesAndImageComponent,
+    //canActivate: [AuthGuard]
+  },
+
+  {
+    path: 'search-tutor',
+    component: SearchTutorComponent,
     //canActivate: [AuthGuard]
   },
 

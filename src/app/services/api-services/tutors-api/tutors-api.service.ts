@@ -6,6 +6,7 @@ import { AuthService } from '../../authentication/auth.service';
 import { BaseService } from '../../base.service';
 import { ICreateOrUpdateTutor } from '../../../interfaces/ICreateOrUpdateTutor.interface';
 import { throwError } from 'rxjs';
+import { ISearchTutorRequest } from '../../../interfaces/ISearchTutorRequest.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -66,5 +67,11 @@ export class TutorsApiService extends BaseService {
           return throwError(err);
         })
       );
+  }
+
+  searchTutor(searchTutorRequest: ISearchTutorRequest) {
+
+    return this.httpClient
+      .post(`${environment.apiUrl}/Tutors/SearchTutors`, searchTutorRequest)
   }
 }

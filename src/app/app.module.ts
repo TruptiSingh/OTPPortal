@@ -23,6 +23,8 @@ import { CreateStudentComponent } from './components/create-student/create-stude
 import { EditStudentComponent } from './components/edit-student/edit-student.component';
 import { StoreUserFileComponent } from './components/store-user-file/store-user-file.component';
 import { UploadFilesAndImageComponent } from './components/upload-files-and-image/upload-files-and-image.component';
+import { SearchTutorComponent } from './components/search-tutor/search-tutor.component';
+import { SafePipe } from './pipes/safe.pipe';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { UploadFilesAndImageComponent } from './components/upload-files-and-imag
     CreateStudentComponent,
     EditStudentComponent,
     StoreUserFileComponent,
-    UploadFilesAndImageComponent
+    UploadFilesAndImageComponent,
+    SearchTutorComponent,
+    SafePipe,
   ],
   imports: [
     BrowserModule,
