@@ -11,12 +11,6 @@
 
 </div>
 
-<div class="row justify-content-center" *ngIf="!pageLoading && authService.isAuthenticated()">
-
-  <span (click)="authService.logout()" class="btn btn-primary ml-2">Logout</span>
-  
-</div>
-
 <form *ngIf="!pageLoading && authService.isAuthenticated()" class="main-page-form">
 
   <h1 class="mb-3">All Users</h1>
@@ -26,6 +20,8 @@
     <div class="flex-item button-row right-row">
       <label class="d-inline search-label" for="searchTerm">Full text search:</label><input class="form-control ml-2 d-inline search-box" type="text" name="searchTerm" [(ngModel)]="usersService.searchTerm" />
     </div>
+    <br />
+    <span (click)="authService.logout()" class="btn btn-primary ml-2">Logout</span>
   </div>
 
   <div class="table-responsive">
@@ -50,7 +46,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let user of users | async">
-          <td *ngIf="!authService.isAdmin()"><ngb-highlight [result]="user.username" [term]="usersService.searchTerm"></ngb-highlight></td>
+          <td><ngb-highlight [result]="user.username" [term]="usersService.searchTerm"></ngb-highlight></td>
           <!--<td *ngIf="authService.isAdmin()" class="cell-link" (click)="viewDetails(user)"><ngb-highlight [result]="user.username" [term]="usersService.searchTerm"></ngb-highlight></td>-->
           <td><ngb-highlight [result]="user.firstName" [term]="usersService.searchTerm"></ngb-highlight></td>
           <td><ngb-highlight [result]="user.lastName" [term]="usersService.searchTerm"></ngb-highlight></td>
@@ -75,14 +71,6 @@
               <i class="fas fa-check"></i>
             </div>
             <div *ngIf="!user.isTutor && user.isActive" (click)="setTutor(user, true)">
-              <i class="fas fa-times"></i>
-            </div>
-          </td>
-          <td *ngIf="authService.isAdmin()">
-            <div *ngIf="user.isStudent && user.isActive" (click)="setStudent(user, false)">
-              <i class="fas fa-check"></i>
-            </div>
-            <div *ngIf="!user.isStudent && user.isActive" (click)="setStudent(user, true)">
               <i class="fas fa-times"></i>
             </div>
           </td>
